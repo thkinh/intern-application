@@ -10,3 +10,8 @@ variable "google_credentials" {
   sensitive   = true
 }
 
+variable "region" {
+  type        = string
+  description = "Default GCP region"
+}
+
