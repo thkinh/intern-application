@@ -67,6 +67,7 @@ web_modules/
 
 # dotenv environment variable files
 .env
+.envrc
 .env.*
 !.env.example
 
@@ -137,3 +138,15 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
