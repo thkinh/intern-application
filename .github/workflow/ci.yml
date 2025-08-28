@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        uses: npm install --production
+
+      - name: Run Lint
+        uses: npm run lint
+
+      - name: Run unit test
+        uses: npm test
+
+      - name: Build docker image
+        uses: docker build -t simpleapp:latest
+
+      - name: Run Trivy scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with: 
+          image-ref: simpleapp:latest
+          format: 'table'
+          exit-code: '1'
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Tag and push to Artifact Registry
+        run: |
+          docker tag simpleapp:latest asia-southeast2-docker.pkg.dev/thinhs-project/my-registry/simpleapp:latest
+          docker push asia-southeast2-docker.pkg.dev/thinhs-project/my-registry/simpleapp:latest
+
+
