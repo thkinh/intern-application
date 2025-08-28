@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "npx eslint .",
-    "test": "jest",
-    "start": "node server.js"
+    "test": "NODE_ENV=test jest",
+    "start": "node server.js",
+    "lint": "npx eslint ."
   },
   "keywords": [],
   "author": "",
