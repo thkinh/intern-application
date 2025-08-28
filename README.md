@@ -7,10 +7,10 @@
 
 
 ## 1. What to Build
-    - [X] Create a small "Hello World" JSON API using either:
-          Node.js with Express OR Python with FastAPI
-          Output: { "status": "ok" }
-    - [X] Keep the code under 50 lines
+- [X] Create a small "Hello World" JSON API using either:
+      Node.js with Express OR Python with FastAPI
+      Output: { "status": "ok" }
+- [X] Keep the code under 50 lines
 
 ## 2. Pipeline Tasks
 - [O] CI:
@@ -28,7 +28,7 @@
     - [X] Use non-root image
     - [X] Use GCP Secret Manager or GitHub Secrets (no plain-text keys)
 - [ ] Observability:
-    - [ ] Enable Cloud Logging
+    - [X] Enable Cloud Logging
     - [ ] Add health check or uptime probe
      
 ## 4. Constraints
