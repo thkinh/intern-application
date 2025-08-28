@@ -20,16 +20,16 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        uses: npm install --production
+        run:  npm install --production
 
       - name: Run Lint
-        uses: npm run lint
+        run:  npm run lint
 
       - name: Run unit test
-        uses: npm test
+        run:  npm test
 
       - name: Build docker image
-        uses: docker build -t simpleapp:latest
+        run:  docker build -t simpleapp:latest
 
       - name: Run Trivy scan
         uses: aquasecurity/trivy-action@0.28.0
