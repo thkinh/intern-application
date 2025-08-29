@@ -38,6 +38,8 @@ Follow least-privilege principle:
 * `roles/run.admin` → Deploy to Cloud Run
 * `roles/artifactregistry.writer` → Push images
 * `roles/iam.serviceAccountUser` → GitHub Actions SA impersonation
+<img width="1063" height="876" alt="2025-08-29-121951_hyprshot" src="https://github.com/user-attachments/assets/c8996009-b112-483e-bebb-3cd815b97d6d" />
+
 
 These are all defined in IaC/service_account.tf
 
