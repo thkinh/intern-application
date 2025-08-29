@@ -5,6 +5,7 @@ This project demonstrates a complete CI/CD pipeline for deploying a minimal web 
 It covers secure containerization, vulnerability scanning, artifact publishing, and automated deployment with GitHub Actions.
 
 **Live URL**: https://simpleapp-1032571919249.asia-southeast2.run.app
+
 **Video Demo**: https://drive.google.com/drive/u/0/folders/173cTIBonrnFePc9dsmkv-nmwTI_ItwAF
 
 ## Objective
