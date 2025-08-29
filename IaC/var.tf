@@ -15,3 +15,9 @@ variable "region" {
   description = "Default GCP region"
 }
 
+variable "simpleapp_host" {
+  description = "simpleapp service URL"
+  type        = string
+  sensitive   = true
+}
+
