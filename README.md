@@ -1,45 +1,55 @@
-# Objective
-- Build and test a simple web API
-- Package it in a secure Docker image
-- Publish the image to Google Artifact Registry
-- Deploy to Google Cloud Run (fully managed)
-- Automate with GitHub Actions (preferred) or Cloud Build, triggered on main branch push.
+# Cloud Run Hello World API
 
+## Overview
+This project demonstrates a complete CI/CD pipeline for deploying a minimal web API to **Google Cloud Run**.
+It covers secure containerization, vulnerability scanning, artifact publishing, and automated deployment with GitHub Actions.
 
-## 1. What to Build
-- [X] Create a small "Hello World" JSON API using either:
-      Node.js with Express OR Python with FastAPI
-      Output: { "status": "ok" }
-- [X] Keep the code under 50 lines
+**Live URL**: https://simpleapp-1032571919249.asia-southeast2.run.app
 
-## 2. Pipeline Tasks
-- [O] CI:
-    - [X] Lint & unit tests
-    - [X] Multi-stage Docker build
-    - [X] Vulnerability scan (e.g. Trivy)
-    - [X] Push to Artifact Registry with vX.Y.Z and latest tags
-- [X] CD:
-    - [X] Deploy/update to Cloud Run
-    - [X] Full traffic to latest revision
-    - [X] Manual rollback instructions
+## Objective
+* Build and test a simple API
+* Package in a secure Docker image
+* Publish to Google Artifact Registry
+* Deploy to Cloud Run (fully managed)
+* Automate with GitHub Actions
 
-## 3. After Deploy:
-- [X] Security:
-    - [X] Use non-root image
-    - [X] Use GCP Secret Manager or GitHub Secrets (no plain-text keys)
-- [o] Observability:
-    - [X] Enable Cloud Logging
-    - [ ] Add health check or uptime probe
-     
-## 4. Constraints
-- [X] Use personal GCP free-tier project
-- [X] Stay within free-tier usage
-- [X] Use least-privilege IAM roles (e.g., run.admin, artifactregistry.writer) - Use gcloud CLI or Terraform and explain choice )
+## Feature
+* Hello World API – returns { "status": "ok" } in under 50 lines
+* CI Pipeline – linting, unit tests, multi-stage Docker build, Trivy vulnerability scan
+* CD Pipeline – deploys to Cloud Run with 100% traffic on latest revision, rollback supported
+* Security – non-root image, secrets managed via GitHub/GCP Secret Manager
+* Observability – Cloud Logging enabled, health check/uptime probe added
+
+## Setup
+* Google Cloud Project (free tier)
+* gcloud CLI installed and authenticated
+* Docker installed locally
+* Terraform installed and setup locally
+
+### Steps
+1. Clone the repo
+2. Authenticate gcloud CLI using `gcloud auth login` and `gcloud auth configure-docker`
+3. Put the GCP Service Account key inside the **IAC/** directory as *key.json* (for running terraform)
+4. Configure the environment variables (.envrc)
+5. If you want to apply the infras, run `terraform apply` in the **IaC/** directory. However, it won't be succeed if you don't build and have the image in the registry first. Instead, code your app with an entry point is server.js, and push the code to the repo, the workflow will be triggered for you.
+
+## IAM ROLEs
+Follow least-privilege principle:
+* `roles/run.admin` → Deploy to Cloud Run
+* `roles/artifactregistry.writer` → Push images
+* `roles/iam.serviceAccountUser` → GitHub Actions SA impersonation
+
+These are all defined in IaC/service_account.tf
+
+## Cost Estimate
+* Artifact Registry: Free up to 0.5 GB stored & 0.5 GB egress/month
+* Cloud Run: 2 million requests/month, 360,000 GB-s compute free
+* Logging/Monitoring: Free basic tier
  
-## 5. What to Submit
-- [X] Public GitHub repo with commit history
-- [ ] README (<= 2 pages): setup, IAM roles, cost estimate, decisions
-- [ ] Demo video (<= 3 mins): push to deploy, app running, logs/scans
-- [X] Live Cloud Run URL
-- [ ] Optional: architecture.png or mermaid.md
+--> Entire project fits within GCP free tier (if usage is low)
 
+## Decisions
+- I choose **Nodejs** with **express** because it's more familiar
+- I choose **Terraform** over **gcloud CLI** because its declarative and easy to apply/destroy
+- All the service account, health check, Cloudrun container,.. are declared in **IAC/** dir
+- The rollback instructions and check list is in the **docs/** directory
