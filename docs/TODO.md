@@ -38,8 +38,8 @@
  
 ## 5. What to Submit
 - [X] Public GitHub repo with commit history
-- [ ] README (<= 2 pages): setup, IAM roles, cost estimate, decisions
-- [ ] Demo video (<= 3 mins): push to deploy, app running, logs/scans
+- [X] README (<= 2 pages): setup, IAM roles, cost estimate, decisions
+- [X] Demo video (<= 3 mins): push to deploy, app running, logs/scans
 - [X] Live Cloud Run URL
 - [ ] Optional: architecture.png or mermaid.md
 
