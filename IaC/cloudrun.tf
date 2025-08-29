@@ -9,7 +9,6 @@ resource "google_cloud_run_service" "simpleapp" {
       }
     }
   }
-
   traffic {
     percent         = 100
     latest_revision = true

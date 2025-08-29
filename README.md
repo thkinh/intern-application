@@ -18,16 +18,16 @@
     - [X] Multi-stage Docker build
     - [X] Vulnerability scan (e.g. Trivy)
     - [X] Push to Artifact Registry with vX.Y.Z and latest tags
-- [.] CD:
+- [X] CD:
     - [X] Deploy/update to Cloud Run
-    - [ ] Full traffic to latest revision
-    - [ ] Manual rollback instructions
+    - [X] Full traffic to latest revision
+    - [X] Manual rollback instructions
 
 ## 3. After Deploy:
 - [X] Security:
     - [X] Use non-root image
     - [X] Use GCP Secret Manager or GitHub Secrets (no plain-text keys)
-- [ ] Observability:
+- [o] Observability:
     - [X] Enable Cloud Logging
     - [ ] Add health check or uptime probe
      
