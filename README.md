@@ -5,6 +5,7 @@ This project demonstrates a complete CI/CD pipeline for deploying a minimal web 
 It covers secure containerization, vulnerability scanning, artifact publishing, and automated deployment with GitHub Actions.
 
 **Live URL**: https://simpleapp-1032571919249.asia-southeast2.run.app
+**Video Demo**: https://drive.google.com/drive/u/0/folders/173cTIBonrnFePc9dsmkv-nmwTI_ItwAF
 
 ## Objective
 * Build and test a simple API
@@ -18,7 +19,7 @@ It covers secure containerization, vulnerability scanning, artifact publishing, 
 * CI Pipeline – linting, unit tests, multi-stage Docker build, Trivy vulnerability scan
 * CD Pipeline – deploys to Cloud Run with 100% traffic on latest revision, rollback supported
 * Security – non-root image, secrets managed via GitHub/GCP Secret Manager
-* Observability – Cloud Logging enabled, health check/uptime probe added
+* Observability – Cloud Logging enabled, uptime probe added
 
 ## Setup
 * Google Cloud Project (free tier)
@@ -41,7 +42,7 @@ Follow least-privilege principle:
 <img width="1063" height="876" alt="2025-08-29-121951_hyprshot" src="https://github.com/user-attachments/assets/c8996009-b112-483e-bebb-3cd815b97d6d" />
 
 
-These are all defined in IaC/service_account.tf
+-> These are all defined in **IaC/service_account.tf**
 
 ## Cost Estimate
 * Artifact Registry: Free up to 0.5 GB stored & 0.5 GB egress/month
